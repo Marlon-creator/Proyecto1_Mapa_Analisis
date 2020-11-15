@@ -1,19 +1,23 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include <iostream>
+#include "Country.h"
+
 class World{
     // atributes
-    Graph worldGraph;
-    int notColored;
+private:
+    std::vector<Country> countries;
 
+public:
     // constructor
     World()
     {
-        Graph worldGraph = new Graph();
-        notColored = 0;
+        
     }
     // methods
-    void startColoring()
+    void startColoring();
+    void insertCountry(Country pCountry);
 };
 
 #endif WORLD_H

@@ -3,9 +3,14 @@
 
 class Graph{
     //atributes
-    
+
     //constructor
+    Graph()
+    {
+
+    }
     //methods
+    void depth();
 }
 
 #endif GRAPH_H
