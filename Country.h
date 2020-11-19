@@ -1,28 +1,51 @@
 #ifndef COUNTRY_H
 #define COUNTRY_H
+#include <iostream>
 
-Country
+class Country
 {
 // atributes
 private:
-    string id;
-    string color;
+    std::string id;
+    std::string color;
 
     float originX;
     float originY;
+    float originPoint;
 
 // methods
 public:
     // constructor
-    Country(string pId, string pColor, int pOriginX,, int pOriginY)
+    Country(std::string pId, std::string pColor, float pOriginX, float pOriginY)
     {
         id = pId;
         color = pColor;
         originX = pOriginX;
         originY = pOriginY;
+        originPoint = originX + originY;
     }
 
-    void paintCountry(string pColor);
-}
+    void paintCountry(std::string pColor);
 
-#endif COUNTRY_H
+    float getOriginPoint()
+    {
+        return originPoint;
+    }
+
+    std::string getId()
+    {
+        return id;
+    }
+
+    float getOriginX()
+    {
+        return originX;
+    }
+
+    float getOriginY()
+    {
+        return originY;
+    }
+};
+
+#endif //COUNTRY_H
