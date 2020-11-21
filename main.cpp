@@ -1,6 +1,7 @@
 #include <vector>
 #include "tinyxml2.h"
 #include "Country.h"
+#include "World.h"
 
 using namespace std;
 
@@ -60,9 +61,7 @@ int main()
     vector<Country*> thirdQuadrant;
     vector<Country*> fourthQuadrant;
 
-
     // XML 
-
     tinyxml2::XMLDocument mundo;
 
     tinyxml2::XMLError eResult = mundo.LoadFile("world.SVG");
@@ -75,8 +74,6 @@ int main()
 
     tinyxml2::XMLElement * pElement = pRoot->FirstChildElement("path");
     if (pElement == nullptr) cout << "return tinyxml2::XML_ERROR_PARSING_ELEMENT";
-
-    int index = 0;
 
     while (pElement != nullptr)
     {   
@@ -109,7 +106,24 @@ int main()
         }
         originY = stof(s);  
 
+        // Unify originX and Y to get originPoint
+        // int iOriginX = stoi(originX);
+        // int iOriginY = stoi(originY);
+
+        // originX = to_string(iOriginX);
+        // originY = to_string(iOriginY);
+
+        // while(originX.size() != 4)
+        // {
+        //     originX = "0" + originX;
+        // }
+        // while(originY.size() != 3)
+        // {
+        //     originY = "0" + originY;
+        // }
+
         // create and add Country
+        //int originPoint = stoi(originX + originY);
         Country* country = new Country(idPais, "#f2f2f2", originX, originY);
 
         // insert the country in one of the four quadrants
@@ -135,8 +149,6 @@ int main()
                 fourthQuadrant.push_back(country);
             }
         }
-
-        index++;
         pElement = pElement->NextSiblingElement("path");
     }
 
@@ -146,21 +158,19 @@ int main()
     quickSort(thirdQuadrant, 0, thirdQuadrant.size() - 1);
     quickSort(fourthQuadrant, 0, fourthQuadrant.size() - 1);
 
-
-
     for (int i = 0; i < firstQuadrant.size(); i++)
     {
         cout << firstQuadrant.at(i)->getId() << ": " << firstQuadrant.at(i)->getOriginPoint() << endl;
     }
-    cout << "2----------------------------------------" << endl;
-    for (int i = 0; i < secondQuadrant.size(); i++)
-    {
-        cout << secondQuadrant.at(i)->getId() << ": " << secondQuadrant.at(i)->getOriginPoint() << endl;
-    }
-    cout << "3---------------------------------------" << endl;
+    cout << "2---------------------------------------" << endl;
     for (int i = 0; i < thirdQuadrant.size(); i++)
     {
         cout << thirdQuadrant.at(i)->getId() << ": " << thirdQuadrant.at(i)->getOriginPoint() << endl;
+    }
+    cout << "3----------------------------------------" << endl;
+    for (int i = 0; i < secondQuadrant.size(); i++)
+    {
+        cout << secondQuadrant.at(i)->getId() << ": " << secondQuadrant.at(i)->getOriginPoint() << endl;
     }
     cout << "4---------------------------------------" << endl;
     for (int i = 0; i < fourthQuadrant.size(); i++)

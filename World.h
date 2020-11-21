@@ -7,16 +7,20 @@
 class World{
     // atributes
 private:
-    std::vector<Country> countries;
+    std::vector<Country>* countries;
 
 public:
     // constructor
     World()
     {
-        
+        countries = new std::vector<Country*>();
     }
+
     // methods
-    void startColoring();
+    void divideAndConquer();
+    void dynamicProgramming();
+    void backTracking();
+
     void insertCountry(Country pCountry);
 };
 
