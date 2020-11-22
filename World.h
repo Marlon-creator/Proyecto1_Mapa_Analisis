@@ -18,7 +18,7 @@ public:
 
     // methods
     void divideAndConquer();
-    void dynamicProgramming();
+    void dynamicProgramming(std::vector<Country*>,int);
     void backTracking();
 
     void insertCountry(Country pCountry);
