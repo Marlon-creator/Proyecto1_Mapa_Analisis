@@ -10,20 +10,11 @@ void World::divideAndConquer()
     
 }
 void World::dynamicProgramming(std::vector<Country*> Quadrant, int colors){
-    
-    for (int i = 0; i < Quadrant.size(); i++)
-    {
+    int tokenColors=0;
+    for (int i = 0; i < Quadrant.size(); i+colors)
+    {   
         if (tokenColor=0){
-            for (int co=0; i<colors; co++){
-                if(Quadrant.at(((co+colors)->getOriginPoint())-(Quadrant.at(co)->getOriginPoint()))>20){
-                    Quadrant.at(co+colors)->setColor(co+1);  
-                }
-                else{
-                    Quadrant.at(co+colors)->setColor(0);
-                }
-                //Quadrant.at(co)->getOriginPoint();
-                //Quadrant.at(co+colors)->getOriginPoint();
-            }
+            Quadrant.at(co+colors)->setColor(co+1);
             tokenColor=1;
         }
         else{
@@ -36,7 +27,5 @@ void World::dynamicProgramming(std::vector<Country*> Quadrant, int colors){
                 }
             }
         }
-    i=i+colors;
     }
-
 }
