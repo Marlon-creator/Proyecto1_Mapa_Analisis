@@ -13,7 +13,6 @@ private:
     float originY;
     float originPoint;
 
-// methods
 public:
     // constructor
     Country(std::string pId, std::string pColor, float pOriginX, float pOriginY)
@@ -25,8 +24,9 @@ public:
         originPoint = originX + originY;
     }
 
+    // methods
     void paintCountry(std::string pColor);
-
+    // getters
     float getOriginPoint()
     {
         return originPoint;
@@ -45,6 +45,16 @@ public:
     float getOriginY()
     {
         return originY;
+    }
+
+    std::string getColor()
+    {
+        return color;
+    }
+    // setters
+    void setColor(std::string pColor)
+    {
+        color = pColor;
     }
 };
 

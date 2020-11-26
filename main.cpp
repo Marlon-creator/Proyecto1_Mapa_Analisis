@@ -1,5 +1,4 @@
 #include <vector>
-#include "tinyxml2.h"
 #include "Country.h"
 #include "World.h"
 
@@ -60,6 +59,8 @@ int main()
     vector<Country*> secondQuadrant;
     vector<Country*> thirdQuadrant;
     vector<Country*> fourthQuadrant;
+    vector<Country*> countries;
+    vector<Country*> countriesOriginal;
 
     // XML 
     tinyxml2::XMLDocument mundo;
@@ -106,25 +107,9 @@ int main()
         }
         originY = stof(s);  
 
-        // Unify originX and Y to get originPoint
-        // int iOriginX = stoi(originX);
-        // int iOriginY = stoi(originY);
-
-        // originX = to_string(iOriginX);
-        // originY = to_string(iOriginY);
-
-        // while(originX.size() != 4)
-        // {
-        //     originX = "0" + originX;
-        // }
-        // while(originY.size() != 3)
-        // {
-        //     originY = "0" + originY;
-        // }
-
-        // create and add Country
-        //int originPoint = stoi(originX + originY);
         Country* country = new Country(idPais, "#f2f2f2", originX, originY);
+
+        countriesOriginal.push_back(country);
 
         // insert the country in one of the four quadrants
         if (originX <= 800)
@@ -160,23 +145,37 @@ int main()
 
     for (int i = 0; i < firstQuadrant.size(); i++)
     {
-        cout << firstQuadrant.at(i)->getId() << ": " << firstQuadrant.at(i)->getOriginPoint() << endl;
+        countries.push_back(firstQuadrant.at(i));
     }
-    cout << "2---------------------------------------" << endl;
     for (int i = 0; i < thirdQuadrant.size(); i++)
     {
-        cout << thirdQuadrant.at(i)->getId() << ": " << thirdQuadrant.at(i)->getOriginPoint() << endl;
+        countries.push_back(thirdQuadrant.at(i));
     }
-    cout << "3----------------------------------------" << endl;
     for (int i = 0; i < secondQuadrant.size(); i++)
     {
-        cout << secondQuadrant.at(i)->getId() << ": " << secondQuadrant.at(i)->getOriginPoint() << endl;
+        countries.push_back(secondQuadrant.at(i));
     }
-    cout << "4---------------------------------------" << endl;
     for (int i = 0; i < fourthQuadrant.size(); i++)
     {
-        cout << fourthQuadrant.at(i)->getId() << ": " << fourthQuadrant.at(i)->getOriginPoint() << endl;
+        countries.push_back(fourthQuadrant.at(i));
     }
+
+    // delete quadrants
+    firstQuadrant.clear();
+    firstQuadrant.shrink_to_fit();
+
+    secondQuadrant.clear();
+    secondQuadrant.shrink_to_fit();
+
+    thirdQuadrant.clear();
+    thirdQuadrant.shrink_to_fit();
+
+    fourthQuadrant.clear();
+    fourthQuadrant.shrink_to_fit();
+
+    // create new world
+    World* world = new World(countries, countriesOriginal);
+    world->divideAndConquer(11);
 
     return 0;
 }
