@@ -1,6 +1,7 @@
 #ifndef WORLD_H
 #define WORLD_H
 
+#include <algorithm>
 #include <iostream>
 #include <vector>
 #include <math.h>
@@ -39,9 +40,17 @@ public:
     void dynamicProgramming(int pColors);
     void backTracking(int pColors);
 
-    void compareCountries(Country* firstCountry, Country* secondCountry);
+    int compareCountries(Country* firstCountry, Country* secondCountry);
     void paintCountries(std::vector<Country*> pCountries, int pColors);
     void updateFile(std::string pFileName);
+
+    void paintCountriesB(std::vector<int>& pPermutation, std::vector<Country*> &secondCountries);
+    int testPermutation(std::vector<std::vector<int>> &pPermutations, std::vector<Country*> &firstCountries, std::vector<Country*> &secondCountries, int pColors);
+
+    int getWhites()
+    {
+        return whites;
+    }
 };
 
 #endif

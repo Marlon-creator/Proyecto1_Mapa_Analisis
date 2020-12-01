@@ -41,6 +41,7 @@
         "cctype": "cpp",
         "compare": "cpp",
         "cstdarg": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "algorithm": "cpp"
     }
 }
