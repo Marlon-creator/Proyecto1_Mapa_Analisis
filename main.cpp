@@ -175,7 +175,7 @@ int main()
 
     // create new world
     World* world = new World(countries, countriesOriginal);
-    //world->divideAndConquer(8);
+    //world->divideAndConquer(3);
     //world->dynamicProgramming(3);
     world->backTracking(3);
     cout << world->getWhites() << endl;

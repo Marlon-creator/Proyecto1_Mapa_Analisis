@@ -86,7 +86,6 @@ void World::updateFile(string pFileName)
 void World::divideAndConquer(int pColors)
 {
     divideAndConquerAux(countries, pColors);
-    cout << whites << endl;
 }
 
 // the divide and conquer algorithm
@@ -125,15 +124,14 @@ void World::divideAndConquerAux(std::vector<Country*> &pCountries, int pColors)
                 compareCountries(firstActual, firstHalf.at(iterator + pColors));                
             }
             //compare first half element with second half element
-            compareCountries(firstActual, secondActual);     
-
-            // update the file 
-            if(painted == 20)
-            {
-                updateFile("world-dynamic.svg");
-                painted = 0;
-            }          
+            compareCountries(firstActual, secondActual);            
         }
+        // update the file 
+        if(painted >= 20)
+        {
+            updateFile("world-divide.svg");
+           
+        }   
     }
 }
 
@@ -161,14 +159,12 @@ void World::dynamicProgramming(int pColors)
         }
         // second group of countries is now the first stage
         firstCountries = secondCountries;
-
-        // update the file 
-        if(painted == 20)
+    }
+    // update the file 
+        if(painted >= 20)
         {
             updateFile("world-dynamic.svg");
-            painted = 0;
         }   
-    }
 }
 
 // if a pair of countries has the same color and they are too close, paint the second country white
@@ -235,9 +231,6 @@ void World::backTracking(int pColors)
     do {
         // insert the permutation in the array of permutations
         permutations.push_back(permutation);
-        for(int i = 0; i < permutation.size(); i++)
-            cout << permutation.at(i) << " ";
-        cout << endl;
         poda++;
     } while(std::next_permutation(permutation.begin(), permutation.end()) && poda <= 100);
 
@@ -262,11 +255,12 @@ void World::backTracking(int pColors)
         // second group of countries is now the first stage
         firstCountries = secondCountries;
 
-        // update the file 
-        if(painted == 20)
-        {
-            updateFile("world-backtracking.svg");
-            painted = 0;
-        }   
+           
+    }
+    // update the file 
+    if(painted >= 20)
+    {
+        updateFile("world-backtracking.svg");
+            
     }
 }
